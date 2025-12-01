@@ -1,0 +1,25 @@
+service: imperios-backend
+
+plugins:
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: us-east-1
+  profile: pessoal
+
+functions: ${file(src/login/functions.yml)}
+resources:
+  Resources:
+    PersonagensTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: personagens
+        BillingMode: PAY_PER_REQUEST
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH

@@ -1,0 +1,37 @@
+{
+  "name": "imperios-backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "package": "serverless package",
+    "deploy": "serverless deploy"
+  },
+  "keywords": [],
+  "author": "Samuel Ronas",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.159",
+    "@types/node": "^22.19.1",
+    "serverless": "^4.25.0",
+    "serverless-esbuild": "^1.56.1",
+    "serverless-offline": "^14.4.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.940.0",
+    "@aws-sdk/client-lambda": "^3.940.0",
+    "@aws-sdk/lib-dynamodb": "^3.940.0",
+    "zod": "^4.1.13"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SamuelRonas/imperios-backend.git"
+  },
+  "bugs": {
+    "url": "https://github.com/SamuelRonas/imperios-backend/issues"
+  },
+  "homepage": "https://github.com/SamuelRonas/imperios-backend#readme",
+  "description": ""
+}
