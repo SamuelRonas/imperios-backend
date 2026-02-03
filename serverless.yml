@@ -2,20 +2,59 @@ service: imperios-backend
 
 plugins:
   - serverless-offline
+  - serverless-dynamodb-local
+
+
+
+package:
+  patterns:
+    - src/**
+    - config-extenders/**
+    - package.json
+
+functions: ${file(merge-functions.js)}  
+
+
 
 provider:
   name: aws
   runtime: nodejs18.x
   region: us-east-1
   profile: pessoal
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - dynamodb:PutItem
+            - dynamodb:GetItem
+            - dynamodb:Query
+            - dynamodb:Scan
+            - dynamodb:UpdateItem
+            - dynamodb:DeleteItem
+          Resource: "*"
 
-functions: ${file(src/login/functions.yml)}
+  httpApi:
+    cors:
+      allowedOrigins:
+        - '*'
+      allowedHeaders:
+        - Content-Type
+        - Authorization
+      allowedMethods:
+        - GET
+        - POST
+        - PUT
+        - DELETE
+        - OPTIONS
+
+        
 resources:
   Resources:
     PersonagensTable:
       Type: AWS::DynamoDB::Table
       Properties:
-        TableName: personagens
+        TableName: characters-table
         BillingMode: PAY_PER_REQUEST
         AttributeDefinitions:
           - AttributeName: id
@@ -23,3 +62,16 @@ resources:
         KeySchema:
           - AttributeName: id
             KeyType: HASH
+            
+custom:
+  dynamodb:
+    stages:
+      - dev
+      - local
+    start:
+      port: 8000
+      inMemory: true
+      migrate: true
+  serverless-offline:
+    httpPort: 3000
+    lambdaPort: 3002

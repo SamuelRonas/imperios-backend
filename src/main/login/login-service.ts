@@ -9,8 +9,8 @@ const userAdm: User = {
 } 
 const userMatheusHml: User = {
     id: "df29242b-4b29-4c4e-b03e-a63059a28ab8",
-    password: "1234",
-    email: "matheus@gmail.com"
+    password: "85302819Nx$",
+    email: "testeprogramacao@gmail.com"
 } 
 const userPauloHml: User = {
     id: "f981d904-a9a3-4e3d-bd4f-2fff94cd3c24",

@@ -1,7 +1,0 @@
-loginHandler:
-  handler: src/login/login-handlers.loginHandler
-  events:
-    - http:
-        path: login
-        method: post
-        cors: true

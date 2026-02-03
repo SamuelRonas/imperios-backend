@@ -1,0 +1,6 @@
+eventHandler:
+  handler: src/main/event/event-handler.eventHandler
+  events:
+    - httpApi:
+        path: /event
+        method: post

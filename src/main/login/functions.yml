@@ -1,0 +1,6 @@
+loginHandler:
+  handler: src/main/login/login-handlers.loginHandler
+  events:
+    - httpApi:
+        path: /login
+        method: post

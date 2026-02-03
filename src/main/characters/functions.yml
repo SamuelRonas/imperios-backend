@@ -1,0 +1,27 @@
+  createCharacter:
+    handler: src/main/characters/Character-handlers.createCharacter
+    events:
+      - httpApi:
+          path: /characters
+          method: post
+
+  listCharacters:
+    handler: src/main/characters/Character-handlers.listCharacters
+    events:
+      - httpApi:
+          path: /characters
+          method: get
+
+  updateCharacter:
+    handler: src/main/characters/Character-handlers.updateCharacter
+    events:
+      - httpApi:
+          path: /characters/{id}
+          method: put
+
+  deleteCharacter:
+    handler: src/main/characters/Character-handlers.deleteCharacter
+    events:
+      - httpApi:
+          path: /characters/{id}
+          method: delete        
