@@ -1,5 +1,6 @@
 import { Status } from "./status/status";
 import { Character, Classe } from "./types";
+import { randomUUID } from "node:crypto";
 
 export class CharacterService {
     async create(data: any) {
@@ -17,6 +18,7 @@ export class CharacterService {
 
         const nivel = normalizeNivel(data.np ?? 0);
 
+        // TODO retirar isso
         function normalizeNivel(nivel: number): number {
             if (nivel < 0) return 0;
             if (nivel > 100) return 100;
@@ -27,7 +29,7 @@ export class CharacterService {
 
 
         const character: Character = {
-            id: crypto.randomUUID(),
+            id: randomUUID(),
             nome: data.nome,
             classe: data.classe,
             np: nivel,
