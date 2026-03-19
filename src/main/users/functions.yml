@@ -1,0 +1,12 @@
+createUser:
+  handler: src/main/users/user-handlers.createUser
+  events:
+    - httpApi:
+        path: /User
+        method: post
+listUsers:
+  handler: src/main/users/user-handlers.listUsers
+  events:
+    - httpApi: 
+      path: /User
+      method: get

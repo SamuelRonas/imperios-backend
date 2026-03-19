@@ -15,6 +15,7 @@
   "license": "ISC",
   "devDependencies": {
     "@types/aws-lambda": "^8.10.159",
+    "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "^22.19.1",
     "serverless": "^4.25.0",
     "serverless-dynamodb-local": "^0.2.40",
@@ -28,6 +29,9 @@
     "@aws-sdk/client-dynamodb": "^3.940.0",
     "@aws-sdk/client-lambda": "^3.940.0",
     "@aws-sdk/lib-dynamodb": "^3.940.0",
+    "bcryptjs": "^3.0.3",
+    "jsonwebtoken": "^9.0.3",
+    "resend": "^6.9.3",
     "yaml": "^2.8.2",
     "zod": "^4.1.13"
   },

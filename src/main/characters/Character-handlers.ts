@@ -1,3 +1,4 @@
+import { authenticate } from "../middleware/authenticate";
 import { CharacterService } from "./Character-service";
 import { CharacterRepository } from "./CharacterRepository";
 import { Status } from "./status/status";
@@ -8,6 +9,9 @@ import { Status } from "./status/status";
 const repo = new CharacterRepository();
 
 export const createCharacter = async (event: any) => {
+
+  authenticate(event);
+  
   const body = JSON.parse(event.body || "{}");
 
   const character = await new CharacterService().create(body);
@@ -20,7 +24,10 @@ export const createCharacter = async (event: any) => {
   };
 };
 
-export const listCharacters = async () => {
+export const listCharacters = async (event: any) => {
+
+  authenticate(event);
+
   const characters = await repo.list();
 
   return {
@@ -30,6 +37,9 @@ export const listCharacters = async () => {
 };
 
 export const updateCharacter = async (event: any) => {
+
+  authenticate(event);
+
   const id = event.pathParameters.id;
   const body = JSON.parse(event.body || "{}");
 
@@ -55,6 +65,9 @@ export const updateCharacter = async (event: any) => {
   
 }
 export const deleteCharacter = async (event: any) => {
+
+  authenticate(event);
+
   const id = event.pathParameters.id;
 
   await repo.delete(id);

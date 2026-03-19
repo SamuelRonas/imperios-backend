@@ -1,5 +1,5 @@
 import { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda';
-import { validaUser } from './login-service';
+import { login } from './login-service';
 
 export async function loginHandler(event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> {
     try {
@@ -16,7 +16,7 @@ export async function loginHandler(event: APIGatewayProxyEvent): Promise<APIGate
             };
         }
 
-        const userId = validaUser(email, password);
+        const token  = await login(email, password);
 
         return {
             statusCode: 200,
@@ -24,7 +24,7 @@ export async function loginHandler(event: APIGatewayProxyEvent): Promise<APIGate
                 "Access-Control-Allow-Origin": "*",
                 "Access-Control-Allow-Credentials": true
             },
-            body: JSON.stringify({ message: "Login realizado com sucesso", userId }),
+            body: JSON.stringify({ message: "Login realizado com sucesso", token }),
         };
 
     } catch (err: any) {

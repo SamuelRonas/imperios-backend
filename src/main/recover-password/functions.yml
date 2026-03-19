@@ -1,0 +1,14 @@
+recoverPasswordHandler:
+  handler: src/main/recover-password/recover-password-handlers.sendRecoveryEmail
+  events:
+    - httpApi:
+        path: /recover-password/send-email
+        method: post
+
+
+validateOtpHandler:
+  handler: src/main/recover-password/recover-password-handlers.validateOtp
+  events:
+    - httpApi:
+        path: /recover-password/validate-otp
+        method: post
